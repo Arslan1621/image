@@ -7,7 +7,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 # Set working directory
 WORKDIR /app
 
-# Install system dependencies (removed duplicate and added stability)
+# Install system dependencies (cleaned up, removed libgthread-2.0-0)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libsm6 \
     libxext6 \
@@ -15,10 +15,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libgomp1 \
     libgtk-3-0 \
     libgl1-mesa-glx \
-    libgthread-2.0-0 \
     python3-tk \
     wget \
     curl && \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # Copy requirements.txt and install Python packages
