@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: image-redaction-tool
+    env: docker
+    plan: starter # Use 'starter' for free tier, 'standard' for better performance
+    region: oregon # Choose your preferred region
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: PORT
+        value: 5000
+    healthCheckPath: /
+    autoDeploy: true
+    disk:
+      name: image-redaction-disk
+      mountPath: /app/data
+      sizeGB: 1
