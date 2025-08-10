@@ -1,6 +1,5 @@
 Flask==2.3.3
 opencv-python-headless==4.8.1.78
-mediapipe
 ultralytics==8.0.196
 easyocr==1.7.0
 Pillow==10.0.1
